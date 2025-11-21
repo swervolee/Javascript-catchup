@@ -3,7 +3,7 @@
 function coma(strings, ...values) {
     // Add 'return' here to output the result of the reduction
     return strings.reduce((prev, curr) => {
-        return prev + curr + (values.length ? values.shift() : '');
+        return prev + (values.length ? values.shift() : '') + curr;
     });
 };
 const condiment = 'jam';
