@@ -1,19 +1,13 @@
 #!/usr/bin/node
-/* just playing around with what i've learned
-   for better understanding */
+const { exec } = require('child_process');
+require('process')
 
-/*Object creation */
+const command = process.argv[2] || 'ls -l'
 
-const user = { name: "john", age: 30 }
-console.log(user);
+const display = (error, stdout, stderr) => {
+  if (error) { console.error(error); return };
+  if (stderr) { console.error(stderr); return };
+  console.log(stdout);
+}
 
-/* To access properties */
-console.log(`Users name is ${user.name}`);
-console.log(`Users age is ${user['age']}`);
-
-/* Removing properties */
-console.log("Adding new property City");
-user.city = "Nairobi";
-console.log(`Updated object ${user}`);
-console.log("deleting the new property City")
-
+exec(command, display);
